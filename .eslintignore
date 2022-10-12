@@ -1,0 +1,6 @@
+public/sw.js
+public/workbox-*.js
+next.config.js
+.eslintrc.js
+webStorm.config.js
+lib/i18n/localUpdate.js

@@ -1,0 +1,218 @@
+# This file was generated based on ".graphqlconfig". Do not edit manually.
+
+schema {
+    query: Query
+    mutation: Mutation
+}
+
+type Mutation {
+    auth_login(email: String!, mode: auth_mode, otp: String, password: String!): auth_tokens
+    auth_logout(refresh_token: String): Boolean
+    auth_password_request(email: String!, reset_url: String): Boolean
+    auth_password_reset(password: String!, token: String!): Boolean
+    auth_refresh(mode: auth_mode, refresh_token: String): auth_tokens
+    users_invite_accept(password: String!, token: String!): Boolean
+    users_me_tfa_disable(otp: String!): Boolean
+    users_me_tfa_enable(otp: String!, secret: String!): Boolean
+    users_me_tfa_generate(password: String!): users_me_tfa_generate_data
+    utils_cache_clear: Void
+    utils_hash_generate(string: String!): String
+    utils_hash_verify(hash: String!, string: String!): Boolean
+    utils_revert(revision: ID!): Boolean
+    utils_sort(collection: String!, item: ID!, to: ID!): Boolean
+}
+
+type Query {
+    extensions: extensions
+    files(filter: directus_files_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [directus_files]
+    files_aggregated(filter: directus_files_filter, groupBy: [String], limit: Int, search: String, sort: [String]): [directus_files_aggregated]
+    files_by_id(id: ID!): directus_files
+    server_health: JSON
+    server_info: server_info
+    server_ping: String
+    server_specs_graphql(scope: graphql_sdl_scope): String
+    server_specs_oas: JSON
+}
+
+type auth_tokens {
+    access_token: String
+    expires: Int
+    refresh_token: String
+}
+
+type datetime_functions {
+    day: Int
+    hour: Int
+    minute: Int
+    month: Int
+    second: Int
+    week: Int
+    weekday: Int
+    year: Int
+}
+
+type directus_files {
+    charset: String
+    description: String
+    duration: Int
+    embed: String
+    filename_disk: String
+    filename_download: String!
+    filesize: Int
+    folder: String
+    height: Int
+    id: ID
+    location: String
+    metadata: JSON
+    modified_by: String
+    modified_on: Date!
+    modified_on_func: datetime_functions
+    storage: String!
+    tags: JSON
+    title: String
+    type: String
+    uploaded_by: String
+    uploaded_on: Date!
+    uploaded_on_func: datetime_functions
+    width: Int
+}
+
+type directus_files_aggregated {
+    avg: directus_files_aggregated_fields
+    avgDistinct: directus_files_aggregated_fields
+    count: directus_files_aggregated_fields
+    countDistinct: directus_files_aggregated_fields
+    group: JSON
+    max: directus_files_aggregated_fields
+    min: directus_files_aggregated_fields
+    sum: directus_files_aggregated_fields
+    sumDistinct: directus_files_aggregated_fields
+}
+
+type directus_files_aggregated_fields {
+    duration: Float
+    filesize: Float
+    height: Float
+    width: Float
+}
+
+type extensions {
+    displays: [String]
+    interfaces: [String]
+    layouts: [String]
+    modules: [String]
+}
+
+type server_info {
+    custom_css: String
+    project_background: String
+    project_color: String
+    project_foreground: String
+    project_logo: String
+    project_name: String
+    project_note: String
+}
+
+type users_me_tfa_generate_data {
+    otpauth_url: String
+    secret: String
+}
+
+enum auth_mode {
+    cookie
+    json
+}
+
+enum graphql_sdl_scope {
+    items
+    system
+}
+
+"ISO8601 Date values"
+scalar Date
+
+"The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf)."
+scalar JSON
+
+"Represents NULL values"
+scalar Void
+
+input date_filter_operators {
+    _eq: String
+    _gt: String
+    _gte: String
+    _lt: String
+    _lte: String
+    _neq: String
+    _nnull: Boolean
+    _null: Boolean
+}
+
+input datetime_function_filter_operators {
+    day: number_filter_operators
+    hour: number_filter_operators
+    minute: number_filter_operators
+    month: number_filter_operators
+    second: number_filter_operators
+    week: number_filter_operators
+    weekday: number_filter_operators
+    year: number_filter_operators
+}
+
+input directus_files_filter {
+    _and: [directus_files_filter]
+    _or: [directus_files_filter]
+    charset: string_filter_operators
+    description: string_filter_operators
+    duration: number_filter_operators
+    embed: string_filter_operators
+    filename_disk: string_filter_operators
+    filename_download: string_filter_operators
+    filesize: number_filter_operators
+    folder: string_filter_operators
+    height: number_filter_operators
+    id: string_filter_operators
+    location: string_filter_operators
+    metadata: string_filter_operators
+    modified_by: string_filter_operators
+    modified_on: date_filter_operators
+    modified_on_func: datetime_function_filter_operators
+    storage: string_filter_operators
+    tags: string_filter_operators
+    title: string_filter_operators
+    type: string_filter_operators
+    uploaded_by: string_filter_operators
+    uploaded_on: date_filter_operators
+    uploaded_on_func: datetime_function_filter_operators
+    width: number_filter_operators
+}
+
+input number_filter_operators {
+    _eq: Float
+    _gt: Float
+    _gte: Float
+    _in: [Float]
+    _lt: Float
+    _lte: Float
+    _neq: Float
+    _nin: [Float]
+    _nnull: Boolean
+    _null: Boolean
+}
+
+input string_filter_operators {
+    _contains: String
+    _empty: Boolean
+    _ends_with: String
+    _eq: String
+    _in: [String]
+    _ncontains: String
+    _nempty: Boolean
+    _nends_with: String
+    _neq: String
+    _nin: [String]
+    _nnull: Boolean
+    _nstarts_with: String
+    _null: Boolean
+    _starts_with: String
+}

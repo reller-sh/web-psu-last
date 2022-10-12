@@ -1,0 +1,3 @@
+query BASE_IO_SYSTEM {
+    server_health
+}

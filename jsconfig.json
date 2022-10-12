@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "Components/*": ["comps/*"],
+      "Lib/*": ["lib/*"],
+      "styles/*": ["styles/*"],
+      "gql/*": ["lib/apollo/schemas/*"]
+    }
+  }
+}

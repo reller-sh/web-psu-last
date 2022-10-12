@@ -1,0 +1,3 @@
+query BASE_IO {
+    _empty
+}

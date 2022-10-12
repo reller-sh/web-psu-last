@@ -1,0 +1,13 @@
+# This file was generated based on ".graphqlconfig". Do not edit manually.
+
+schema {
+    query: Query
+}
+
+type Query {
+    "There's no data to query."
+    _empty: Void
+}
+
+"Represents NULL values"
+scalar Void

@@ -1,0 +1,42 @@
+{
+  "projects": {
+    "default": {
+      "includes": [
+        "**",
+        "**/**"
+      ],
+      "excludes": [
+        "system/**"
+      ],
+      "schemaPath": "schema.gql",
+      "extensions": {
+        "endpoints": {
+          "default": {
+            "url": "https://sa-dev.volki.digital/graphql/",
+            "headers": {
+              "user-agent": "JS GraphQL"
+            },
+            "introspect": true
+          }
+        }
+      }
+    },
+    "system": {
+      "includes": [
+        "system/**"
+      ],
+      "schemaPath": "system/schema.gql",
+      "extensions": {
+        "endpoints": {
+          "default": {
+            "url": "https://sa-dev.volki.digital/graphql/system",
+            "headers": {
+              "user-agent": "JS GraphQL"
+            },
+            "introspect": true
+          }
+        }
+      }
+    }
+  }
+}
